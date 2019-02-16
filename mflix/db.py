@@ -77,7 +77,7 @@ def get_movies_by_country(countries):
         # Find movies matching the "countries" list, but only return the title
         # and _id. Do not include a limit in your own implementation, it is
         # included here to avoid sending 46000 documents down the wire.
-        return list(db.movies.find().limit(1))
+        return list(db.movies.find({'countries': {'$in': countries}}, {'title'}))
 
     except Exception as e:
         return e
@@ -194,7 +194,7 @@ def build_query_sort_project(filters):
 
             # TODO: Text and Subfield Search
             # Construct a query that will search for the chosen genre.
-            query = {}
+            query = {'genres': {'$in': filters['genres']}}
 
     return query, sort, project
 
