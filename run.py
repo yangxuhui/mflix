@@ -13,4 +13,4 @@ if __name__ == "__main__":
     app.config['MFLIX_DB_URI'] = config['PROD']['MFLIX_DB_URI']
     app.config['SECRET_KEY'] = config['PROD']['SECRET_KEY']
 
-    app.run()
+    app.run(host='0.0.0.0', port=8888)
